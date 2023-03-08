@@ -18,8 +18,12 @@ The database uses sqlite3. The project only makes and uses one connection to the
 #### Database usage instructions
 To interact with the database import the `db` function from `database.py` into your code
 
-`import db from database`
+`from database import db`
 
 Then call the db function with an SQL statement to execute queries
 
-`db('SELECT * FROM my_table;')`
+`db('CREATE TABLE team_members(name TEXT, email TEXT);')`
+
+You can also get the result of your query by doing
+
+`rows = db('SELECT * FROM team_members')`
