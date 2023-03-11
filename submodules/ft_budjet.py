@@ -17,4 +17,6 @@ def create_budget():
 
     annual_budget = total_income - total_expenses
 
+    print(f"Total Income: {total_income}")
+    print(f"Total Expenses: {total_expenses}")
     return annual_budget
