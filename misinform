@@ -1,0 +1,7 @@
+#!/usr/bin/bash
+
+# Adding the submodules folder to the list of folders python searches for modules
+export PYTHONPATH="$PYTHONPATH:$(pwd)/submodules"
+
+# Running the main python file
+./main.py

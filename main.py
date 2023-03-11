@@ -1,44 +1,8 @@
+#!/usr/bin/python3
+
 import sys
-
-
-def press():
-    # Code to display press releases goes here
-    print("Press Releases")
-
-
-def budget():
-    # Code to display budget information goes here
-    print("Budget Information")
-
-
-def projects():
-    # Code to display ongoing projects information goes here
-    print("Ongoing Projects")
-
-
-def economy():
-    # Code to display current economic information goes here
-    print("Economic Information")
-
-
-def population():
-    # Code to display population statistics goes here
-    print("Population Statistics")
-
-
-def holidays():
-    # Code to display public holidays goes here
-    print("Public Holidays")
-
-
-def tenders():
-    # Code to display tender notices goes here
-    print("Tender Notices")
-
-
-def contact():
-    # Code to display contact information goes here
-    print("Contact Information")
+from budget import budget
+from holidays import holidays
 
 
 def help():

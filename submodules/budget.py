@@ -1,4 +1,4 @@
-def create_budget():
+def budget():
     sources = ["Taxes", "Loans", "Donations", "Other Sources"]
     amounts = []
     for i in range(len(sources)):
