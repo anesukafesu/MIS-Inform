@@ -1,3 +1,5 @@
+main
+Contributor: Ochan
 # MIS-Inform
 
 ## Project Structure
@@ -28,3 +30,4 @@ You can also get the result of your query by doing
 
 `rows = db('SELECT * FROM team_members')`
 Contibutors: Samuel
+ main
