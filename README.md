@@ -27,3 +27,31 @@ Then call the db function with an SQL statement to execute queries
 You can also get the result of your query by doing
 
 `rows = db('SELECT * FROM team_members')`
+### OPTIONS 
+OPTIONS
+       press
+Display the latest press releases issued by the government.
+
+       budget
+Display the actual and projected income and expenses of the government.
+
+       projects
+Display information about all ongoing government projects, including their completion rates and estimated completion dates.
+
+       economy
+Display current economic information, including GDP, exchange rate, employment rate, etc.
+
+       population
+Display population statistics.
+
+       holidays
+Display the list of public holidays for the current year.
+
+       tenders
+Display all pending tender notices.
+
+       contact
+Display contact information for government departments.
+
+       -h, --help
+Display the help page and exit.
