@@ -12,6 +12,7 @@ For example when you run the command `misinform budget`, the main script will ca
 The project is made up of several submodules. Each of which implements a feature. A submodule is a python file whose name is the name of the file. Each module should have a function that will be called by the main script whenever a command is entered that requires that module.
 
 contacts
+Display contacts of different government departments.
 
 
 ### Database
