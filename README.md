@@ -11,6 +11,9 @@ For example when you run the command `misinform budget`, the main script will ca
 ### Submodules
 The project is made up of several submodules. Each of which implements a feature. A submodule is a python file whose name is the name of the file. Each module should have a function that will be called by the main script whenever a command is entered that requires that module.
 
+contacts
+Display contacts of different government departments.
+
 
 ### Database
 The database uses sqlite3. The project only makes and uses one connection to the database to prevent errors. Therefore to interact with database, you use functions implemented in the `database.py` file.
