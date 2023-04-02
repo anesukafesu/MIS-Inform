@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-
+from database import create_cursor
 
 holidays_array = [
     ["Jan 01", "New Year's Day"],
@@ -16,6 +16,10 @@ holidays_array = [
     ["Dec 25", "Christmas Day"],
     ["Dec 26", "Boxing Day"]
 ]
+
+cursor = create_cursor()
+
+cursor('CREATE TABLE IF NOT EXISTS holidays (date TEXT, name TEXT)')
 
 
 def holidays():
