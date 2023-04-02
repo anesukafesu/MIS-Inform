@@ -1,4 +1,3 @@
-#!/usr/bin/python3
 # Define the contact information as a list of dictionaries
 contacts = [
     {
