@@ -10,6 +10,7 @@ def holidays():
     
     # Print the headings
     print("Date   | Holiday Name")
-
+    
+    # Print the holidays
     for date, holiday in cursor:
         print(date, "|", holiday)
