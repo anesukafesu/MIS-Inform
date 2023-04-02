@@ -17,10 +17,13 @@ def create_cursor():
     from database import create_cursor
     
     # Create a cursor using the create_cursor function
-    cursor = create_cursor()
+    # Create cursor returns both the cursor and the connection
+    cursor, db = create_cursor()
     
     # Execute a query
     cursor.execute("INSERT INTO test(name, email) VALUES ('John Doe', 'john@example.com');")
+    # Commit the databases changes
+    db.commit()
 
     # Execute another query
     cursor.execute("SELECT * FROM test;")
@@ -41,4 +44,4 @@ def create_cursor():
 
     cursor = db.cursor()
 
-    return cursor
+    return cursor, db
