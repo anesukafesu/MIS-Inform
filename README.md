@@ -5,28 +5,9 @@ To run the project, you have to install the requirements listed in the `requirem
 
 `pip install -r requirements.txt`
 
-It is recommended that you use a virtual environment to avoid dependency conflicts with other programs. To set one up, follow the following steps:
-
-1. Create the virtual environment
-`python3 -m venv venv`
-
-2. Activate the virtual environment
-`source venv/bin/activate`
-
-3. Install the project dependencies
-`pip install -r requirements.txt`
-
-After this you can run the scripts and this project's dependencies will be isolated from your other system-wide dependencies.
-
-When you are done you can deactivate the environment
-4. Deactivate the environment
-`source venv/bin/deactivate`
-
-Any other time you need to run the project, just activate(Step 2) and deactivate(Step 4) the virtual environment. Also make sure to reinstall the requirements.txt after each `git pull` in case there are additional dependencies.
-
 ## Project Structure
 
-The project is made of a main script written in the `main.py` file and submodules written in the submodules directory. In addition there is a database that stores data at the root of the project
+The project is made of a main script written in the `main.py` file and submodules written in the submodules directory. In addition there is a database whose cursor is implemented in the `submodules/database.py` file.
 
 ### Main Script
 The main script is written in main.py. This script reads commands and sends them to the relevant submodule. 
@@ -40,9 +21,10 @@ Display contacts of different government departments.
 
 
 ### Database
+The database used in this project is MySQL. As a result, you will need a MySQL connnector installed, which should be installed if you ran the `pip install -r requirements.txt` when setting up the project.
 
 #### Database usage instructions
-...pending
+These instructions are written as part of the `database.py` module.
 
 ### OPTIONS 
 OPTIONS
