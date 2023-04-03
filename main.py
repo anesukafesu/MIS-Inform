@@ -1,8 +1,9 @@
 #!/usr/bin/python3
 
 import sys
-import budget
-import holidays
+from submodules import budget
+from submodules import holidays
+from submodules import database
 
 
 def help():
@@ -21,41 +22,43 @@ Options:
 """)
 
 
-# Main program loop
-while True:
-    print("Welcome to Misinform! Please select an option:")
-    print("1. Press")
-    print("2. Budget")
-    print("3. Projects")
-    print("4. Economy")
-    print("5. Population")
-    print("6. Holidays")
-    print("7. Tenders")
-    print("8. Contact")
-    print("9. Help")
-    print("0. Exit")
-    choice = input("Enter your choice: ")
+# print(budget.Budget1.get_allocations())
 
-    if choice == "1":
-        press()
-    elif choice == "2":
-        budget.budget()
-    elif choice == "3":
-        projects()
-    elif choice == "4":
-        economy()
-    elif choice == "5":
-        population()
-    elif choice == "6":
-        holidays.holidays()
-    elif choice == "7":
-        tenders()
-    elif choice == "8":
-        contact()
-    elif choice == "9":
-        help()
-    elif choice == "0":
-        print("Thank you for using Misinform!")
-        sys.exit(0)
-    else:
-        print("Invalid choice. Please try again.")
+# Main program loop
+# while True:
+print("Welcome to Misinform! Please select an option:")
+print("1. Press")
+print("2. Budget")
+print("3. Projects")
+print("4. Economy")
+print("5. Population")
+print("6. Holidays")
+print("7. Tenders")
+print("8. Contact")
+print("9. Help")
+print("0. Exit")
+# choice = input("Enter your choice: ")
+
+# if choice == "1":
+#     press()
+# elif choice == "2":
+#     budget.budget()
+# elif choice == "3":
+#     projects()
+# elif choice == "4":
+#     economy()
+# elif choice == "5":
+#     population()
+# elif choice == "6":
+#     holidays.holidays()
+# elif choice == "7":
+#     tenders()
+# elif choice == "8":
+#     contact()
+# elif choice == "9":
+#     help()
+# elif choice == "0":
+#     print("Thank you for using Misinform!")
+#     sys.exit(0)
+# else:
+#     print("Invalid choice. Please try again.")

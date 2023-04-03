@@ -36,7 +36,7 @@ def budget():
 # -> Revenues: Year | Tax Revenue | Grants and Loans | Non-Tax Revenue
 
 
-class Budget():
+class Budget_Class():
     """
     This class embodies the attributes and features associated with the
     yearly fiscal budget of the Rwandan Government.
@@ -48,27 +48,28 @@ class Budget():
         """
         pass
 
-    def get_budget(self, year):
+    def get_budget(self, year=2023):
         """
         Get the budget of the Rwandan Govt for the specified year
             - params: year(date)
         """
         return year
 
-    def get_allocations(self, year):
+    def get_allocations(self, year=2023):
         """
         Get the budget allocations for each sector for the specified year
             - params: year(date)
         """
         return year
 
-    def get_revenues(self, year):
+    def get_revenues(self, year=2023):
         """
         Get the revenue sources for the specified year
             - params: year(date)
         """
         return year
 
+Budget = Budget_Class()
 
 if __name__ == '__main__':
     print('Budget Submodule')
