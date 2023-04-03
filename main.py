@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 
 import sys
-from budget import budget
-from holidays import holidays
+import budget
+import holidays
 
 
 def help():
@@ -39,7 +39,7 @@ while True:
     if choice == "1":
         press()
     elif choice == "2":
-        budget()
+        budget.budget()
     elif choice == "3":
         projects()
     elif choice == "4":
@@ -47,7 +47,7 @@ while True:
     elif choice == "5":
         population()
     elif choice == "6":
-        holidays()
+        holidays.holidays()
     elif choice == "7":
         tenders()
     elif choice == "8":
