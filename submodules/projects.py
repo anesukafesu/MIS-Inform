@@ -1,17 +1,17 @@
-import project
+from database import create_cursor
+import datetime
 
-# Define a function to display project information
-def display_project_info(p):
-    print(f"Project Name: {p.name}")
-    print(f"Description: {p.description}")
-    print(f"Start Date: {p.start_date}")
-    print(f"Estimated Completion Date: {p.estimated_completion_date}")
-    print(f"Completion Rate: {p.completion_rate}%")
-    print()
+cursor,db = create_cursor()
 
-# Get a list of all ongoing government projects
-projects = project.get_ongoing_government_projects()
 
-# Display information about each project
-for p in projects:
-    display_project_info(p)
+project_name = "Amahoro Stadium Refurbishment"
+project_location = "Kigali City, Kigali Province"
+project_description = "Renovating Amahoro stadium to align with international stadium standards. The objective is to make Kigali a sporting destination and promote tourism in Rwanda."
+duration_months = "12"
+estimated_completion_date = "28 March 2024"
+project_status = "Ongoing"
+
+cursor.execute("INSERT INTO projects(name, location, description, estimated_completion_date, status) VALUES(%s,%s,%s,%s,%s)",(project_name, project_location, project_description, estimated_completion_date, project_status))
+
+db.commit()
+
