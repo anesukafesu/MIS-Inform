@@ -42,7 +42,9 @@ while True:
     if choice == "1":
         press()
     elif choice == "2":
-        budget.budget()
+        print(budget.get_allocations(2020))
+        print(budget.get_budget(2019))
+        print(budget.get_revenue(2014))
     elif choice == "3":
         projects()
     elif choice == "4":

@@ -6,7 +6,7 @@ BUDGET SUBMODULE:
         3 - Yearly Revenues of the Rwandan Government
 """
 
-from database import create_cursor
+from submodules.database import create_cursor
 
 cursor, db = create_cursor()
 
@@ -153,7 +153,6 @@ def get_allocations(year=2021):
         year = (year,)
         cursor.execute(sql, year)
         res = cursor.fetchall()
-        print(res)
         row = res[0]
         return Allocation_request_template.format(row[0], row[0], row[1], row[2], row[3], row[4], row[0])
 
