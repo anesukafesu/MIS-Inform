@@ -9,6 +9,7 @@ Functions:
 
 from mysql.connector import connect
 
+
 def create_cursor():
     """
     Creates a database cursor that you can use to execute queries.
@@ -45,6 +46,3 @@ def create_cursor():
     cursor = db.cursor()
 
     return cursor, db
-
-
-
