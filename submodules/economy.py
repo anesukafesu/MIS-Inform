@@ -4,7 +4,8 @@ from database import create_cursor
 
 def economy(economic_data):
     cursor, db = create_cursor()
-    cursor.execute('SELECT * FROM economy')
+    cursor.execute("CREATE TABLE economy(key VARCHAR(256), value VARCHAR(256));")
+
     # define economic information as a dictionary
     economic_data = {
         "gdp": "$18bn",
@@ -29,8 +30,14 @@ def economy(economic_data):
         "reserves": "$1.89bn",
     }
 
+    for key in economic_data:
+        cursor.execute("INSERT INTO economy VALUES(%s, %s)", (key, economic_data[key]))
+    
+    db.commit()
+    #
 
-    while True:
+
+    """while True:
         # display economic information to user
         print(f"GDP: {economic_data['gdp']}")
         print(f"Inflation: {economic_data['inflation']}")
@@ -71,4 +78,4 @@ def economy(economic_data):
             # handle invalid input
             print("Invalid input. Please enter 'm', 'p', or 'q'.")
 
-print("Back to the main page.")
+print("Back to the main page.")"""
