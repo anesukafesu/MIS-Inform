@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-from database import create_cursor
+from submodules.database import create_cursor
 
 def holidays():
     # Create a cursor and db connection

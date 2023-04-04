@@ -45,3 +45,6 @@ def create_cursor():
     cursor = db.cursor()
 
     return cursor, db
+
+
+

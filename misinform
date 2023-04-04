@@ -4,4 +4,4 @@
 export PYTHONPATH="$PYTHONPATH:$(pwd)/submodules"
 
 # Running the main python file
-./main.py
+./main.py $1
