@@ -72,7 +72,6 @@ def create_tables():
     cursor.executemany(sql, val)
     db.commit()
 
-
 Budget_request_template = """
         THE RWANDAN GOVERNMENT BUDGET FOR THE YEAR {} - OVERVIEW
     The Rwandan government's budget for the year {} was RWF {} trillion,
