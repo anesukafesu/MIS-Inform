@@ -1,44 +1,8 @@
+#!/usr/bin/python3
 import sys
-
-
-def press():
-    # Code to display press releases goes here
-    print("Press Releases")
-
-
-def budget():
-    # Code to display budget information goes here
-    print("Budget Information")
-
-
-def projects():
-    # Code to display ongoing projects information goes here
-    print("Ongoing Projects")
-
-
-def economy():
-    # Code to display current economic information goes here
-    print("Economic Information")
-
-
-def population():
-    # Code to display population statistics goes here
-    print("Population Statistics")
-
-
-def holidays():
-    # Code to display public holidays goes here
-    print("Public Holidays")
-
-
-def tenders():
-    # Code to display tender notices goes here
-    print("Tender Notices")
-
-
-def contact():
-    # Code to display contact information goes here
-    print("Contact Information")
+from submodules import budget
+from submodules import holidays
+from submodules import database
 
 
 def help():
@@ -57,8 +21,11 @@ Options:
 """)
 
 
+# print(budget.Budget1.get_allocations())
+
 # Main program loop
 while True:
+
     print("Welcome to Misinform! Please select an option:")
     print("1. Press")
     print("2. Budget")
@@ -75,7 +42,9 @@ while True:
     if choice == "1":
         press()
     elif choice == "2":
-        budget()
+        print(budget.get_allocations(2020))
+        print(budget.get_budget(2019))
+        print(budget.get_revenue(2014))
     elif choice == "3":
         projects()
     elif choice == "4":
@@ -83,7 +52,7 @@ while True:
     elif choice == "5":
         population()
     elif choice == "6":
-        holidays()
+        holidays.holidays()
     elif choice == "7":
         tenders()
     elif choice == "8":
