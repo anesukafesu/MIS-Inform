@@ -1,8 +1,8 @@
 #!/usr/bin/python3
-
 import sys
-import budget
-import holidays
+from submodules import budget
+from submodules import holidays
+from submodules import database
 
 
 def help():
@@ -21,8 +21,11 @@ Options:
 """)
 
 
+# print(budget.Budget1.get_allocations())
+
 # Main program loop
 while True:
+
     print("Welcome to Misinform! Please select an option:")
     print("1. Press")
     print("2. Budget")
@@ -39,7 +42,9 @@ while True:
     if choice == "1":
         press()
     elif choice == "2":
-        budget.budget()
+        print(budget.get_allocations(2020))
+        print(budget.get_budget(2019))
+        print(budget.get_revenue(2014))
     elif choice == "3":
         projects()
     elif choice == "4":
