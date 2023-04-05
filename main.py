@@ -7,6 +7,7 @@ from population import population
 from tenders import tenders
 from contact import contacts
 from os import system
+from time import sleep
 
 welcome_screen = """
 ███╗   ███╗██╗███████╗      ██╗███╗   ██╗███████╗ ██████╗ ██████╗ ███╗   ███╗
@@ -58,66 +59,69 @@ flags = {
 
 # Loop to render screen
 while True:
-    # Checks if the program should exit
-    if flags['exit_program']:
-        print(exit_message)
-        break
-    
-    # Tells the program to exit
-    def trigger_exit():
-        flags['exit_program'] = True
-    
-    # Prints the guide
-    def show_help_info():
-        print(guide)
-
-    # Clear screen
     try:
-        system("clear")
+        # Checks if the program should exit
+        if flags['exit_program']:
+            print(exit_message)
+            break
+    
+        # Tells the program to exit
+        def trigger_exit():
+            flags['exit_program'] = True
+    
+        # Prints the guide
+        def show_help_info():
+            print(guide)
+
+        # Clear screen
+        try:
+            system("clear")
+        except:
+            system("cls")
+    
+        # Print welcome screen and version
+        print(welcome_screen)
+        print(version)
+    
+        # Options
+        options = {
+            'Press': None,
+            'Budget': None,
+            'Projects': projects,
+            'Economy': economy,
+            'Population': population,
+            'Holidays': holidays,
+            'Tenders': tenders,
+            'Contact': contacts,
+            'Help': show_help_info,
+            'Exit': trigger_exit
+        }
+    
+        # Creating a list of all available options
+        options_list = list(options.keys())
+
+        # Showing the terminal menu
+        # User's selection will be returned and stored in s
+        s = show_terminal_menu(options_list, "Main Menu")
+
+        # Calling the function for the option the user picked
+        options[s].__call__()
+    
+
+        # Create an exit menu
+        print("")
+        print("")
+        print("")
+        exit_options = ["Back to Main Menu", "Exit"]
+    
+        s = show_terminal_menu(exit_options, "Exit Options")
+
+        if s == "Exit":
+            trigger_exit()
+        else:
+            # The user opted to return to the main menu
+            # We make sure that they do not exit
+            flags['exit_program'] = False
     except:
-        system("cls")
-    
-    # Print welcome screen and version
-    print(welcome_screen)
-    print(version)
-    
-    # Options
-    options = {
-        'Press': None,
-        'Budget': None,
-        'Projects': projects,
-        'Economy': economy,
-        'Population': population,
-        'Holidays': holidays,
-        'Tenders': tenders,
-        'Contact': contacts,
-        'Help': show_help_info,
-        'Exit': trigger_exit
-    }
-    
-    # Creating a list of all available options
-    options_list = list(options.keys())
-
-    # Showing the terminal menu
-    # User's selection will be returned and stored in s
-    s = show_terminal_menu(options_list, "Main Menu")
-
-    # Calling the function for the option the user picked
-    options[s].__call__()
-    
-
-    # Create an exit menu
-    print("")
-    print("")
-    print("")
-    exit_options = ["Back to Main Menu", "Exit"]
-    
-    s = show_terminal_menu(exit_options, "Exit Options")
-
-    if s == "Exit":
-        trigger_exit()
-    else:
-        flags['exit_program'] = False
-
-    # Else the user opted to return to main menu
-    # In which case we just let the program run
+        print("Something went wrong. Please try again...")
+        sleep(1.5)
