@@ -11,7 +11,7 @@ from submodules.database import create_cursor
 cursor, db = create_cursor()
 
 def budget():
-    year = input('Enter a year:  ')
+    year = int(input('Enter a year:  '))
 
     budget = get_budget(year)
     allocation = get_allocations(year)
