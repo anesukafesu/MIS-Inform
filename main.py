@@ -61,7 +61,6 @@ while True:
         break
 
     def trigger_exit():
-        global exit_program
         exit_program = True
 
     def show_help_info():
@@ -105,4 +104,4 @@ while True:
         trigger_exit()
 
     # Else the user opted to return to main menu
-    # So we make sure exit_program is set to false
+    # In which case we just let the program run
