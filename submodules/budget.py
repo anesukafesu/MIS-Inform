@@ -11,7 +11,22 @@ from submodules.database import create_cursor
 cursor, db = create_cursor()
 
 def budget():
-    year = int(input('Enter a year:  '))
+
+    print('ENTER YEAR BETWEEN 2012 AND 2021')
+
+    try:
+        year = int(input('Enter a year:  '))
+
+        if year < 2012 or year > 2021:
+            raise Exception
+        
+    except ValueError:
+        print('Year must be a digit!')
+        return
+    except Exception:
+        print('Please Input a year between 2021 and 2012(Both inclusive)')
+        return
+
 
     budget = get_budget(year)
     allocation = get_allocations(year)
@@ -73,24 +88,13 @@ def get_budget(year=2021):
         - params: year(date)
         - range: 2012 to 2021
     """
-    try:
-        if not isinstance(year,  int):
-            raise ValueError
-        if year < 2012 or year > 2021:
-            raise Exception
-        
-    except ValueError:
-        return 'Year must be a digit!'
-    except Exception:
-        return 'Please Input a year between 2021 and 2012(Both inclusive)'
     
-    else:
-        sql = "SELECT * FROM Budgets WHERE year = %s"
-        year = (year,)
-        cursor.execute(sql, year)
-        res = cursor.fetchall()
-        row = res[0]
-        return Budget_request_template.format(row[0], row[0], row[1], round((row[1]/1094), 3))
+    sql = "SELECT * FROM Budgets WHERE year = %s"
+    year = (year,)
+    cursor.execute(sql, year)
+    res = cursor.fetchall()
+    row = res[0]
+    return Budget_request_template.format(row[0], row[0], row[1], round((row[1]/1094), 3))
 
 
 def get_allocations(year=2021):
@@ -99,24 +103,13 @@ def get_allocations(year=2021):
         - params: year(date)
         - range: 2012 to 2021
     """
-    try:
-        if not isinstance(year,  int):
-            raise ValueError
-        if year < 2012 or year > 2021:
-            raise Exception
-        
-    except ValueError:
-        return 'Year must be a digit!'
-    except Exception:
-        return 'Please Input a year between 2021 and 2012(Both inclusive)'
-    
-    else:
-        sql = "SELECT * FROM Allocations WHERE year = %s"
-        year = (year,)
-        cursor.execute(sql, year)
-        res = cursor.fetchall()
-        row = res[0]
-        return Allocation_request_template.format(row[0], row[0], row[1], row[2], row[3], row[4], row[0])
+
+    sql = "SELECT * FROM Allocations WHERE year = %s"
+    year = (year,)
+    cursor.execute(sql, year)
+    res = cursor.fetchall()
+    row = res[0]
+    return Allocation_request_template.format(row[0], row[0], row[1], row[2], row[3], row[4], row[0])
 
 
 def get_revenue(year=2021):
@@ -125,25 +118,14 @@ def get_revenue(year=2021):
         - params: year(date)
         - range: 2012 to 2021
     """
+   
+    sql = "SELECT * FROM Revenues WHERE year = %s"
+    year = (year,)
+    cursor.execute(sql, year)
+    res = cursor.fetchall()
+    row = res[0]
+    return Revenue_request_template.format(row[0], row[0], row[1], row[2], row[3], row[4])
 
-    try:
-        if not isinstance(year,  int):
-            raise ValueError
-        if year < 2012 or year > 2021:
-            raise Exception
-        
-    except ValueError:
-        return 'Year must be a digit!'
-    except Exception:
-        return 'Please Input a year between 2021 and 2012(Both inclusive)'
-    
-    else:
-        sql = "SELECT * FROM Revenues WHERE year = %s"
-        year = (year,)
-        cursor.execute(sql, year)
-        res = cursor.fetchall()
-        row = res[0]
-        return Revenue_request_template.format(row[0], row[0], row[1], row[2], row[3], row[4])
 
 if __name__ == '__main__':
     print('Budget Submodule')
