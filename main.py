@@ -1,11 +1,11 @@
 #!/usr/bin/python3
 from simple_term_menu import TerminalMenu
-from submodules.holidays import holidays
-from submodules.projects import projects
-from submodules.economy import economy
-from submodules.population import population
-from submodules.tenders import tenders
-from submodules.contact import contacts
+from holidays import holidays
+from projects import projects
+from economy import economy
+from population import population
+from tenders import tenders
+from contact import contacts
 from os import system
 
 welcome_screen = """
@@ -52,22 +52,32 @@ def show_terminal_menu(options = [], menu_title=""):
 
 exit_message = "01000111 01101111 01101111 01100100  01100010 01111001 01100101"
 
-exit_program = False
+flags = {
+    'exit_program': False
+}
 
 # Loop to render screen
 while True:
-    if exit_program:
+    # Checks if the program should exit
+    if flags['exit_program']:
         print(exit_message)
         break
-
+    
+    # Tells the program to exit
     def trigger_exit():
-        exit_program = True
-
+        flags['exit_program'] = True
+    
+    # Prints the guide
     def show_help_info():
         print(guide)
 
-    # Print welcome screen
-    system("clear")
+    # Clear screen
+    try:
+        system("clear")
+    except:
+        system("cls")
+    
+    # Print welcome screen and version
     print(welcome_screen)
     print(version)
     
@@ -84,8 +94,12 @@ while True:
         'Help': show_help_info,
         'Exit': trigger_exit
     }
-
+    
+    # Creating a list of all available options
     options_list = list(options.keys())
+
+    # Showing the terminal menu
+    # User's selection will be returned and stored in s
     s = show_terminal_menu(options_list, "Main Menu")
 
     # Calling the function for the option the user picked
@@ -98,10 +112,12 @@ while True:
     print("")
     exit_options = ["Back to Main Menu", "Exit"]
     
-    s = show_terminal_menu(exit_options, "Exit options")
+    s = show_terminal_menu(exit_options, "Exit Options")
 
     if s == "Exit":
         trigger_exit()
+    else:
+        flags['exit_program'] = False
 
     # Else the user opted to return to main menu
     # In which case we just let the program run
