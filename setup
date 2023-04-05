@@ -1,0 +1,18 @@
+#!/usr/bin/bash
+
+# This script sets up everything the program needs to run
+# 1. Install dependencies via pip
+# 2. Add current working directory to PATH variable
+
+# Installing dependencies
+echo "Installing PIP dependencies"
+pip install -r requirements.txt
+
+# Creating symlink to misinform in the first folder in PATH variable
+# This will make the script executable from anywhere in the file system
+
+NEW_PATH="$PATH:$(pwd)"
+
+SET_NEW_PATH_COMMAND="export PATH=$NEW_PATH"
+
+echo $SET_NEW_PATH_COMMAND >> '~/.bashrc'

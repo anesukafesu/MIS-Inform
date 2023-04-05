@@ -1,14 +1,33 @@
 #!/usr/bin/python3
-import sys
-from submodules import budget
-from submodules import holidays
-from submodules import database
+from simple_term_menu import TerminalMenu
+from holidays import holidays
+from projects import projects
+from economy import economy
+from population import population
+from tenders import tenders
+from contact import contacts
+from os import system, name as os_name
+from time import sleep
 
+welcome_screen = """
+███╗   ███╗██╗███████╗      ██╗███╗   ██╗███████╗ ██████╗ ██████╗ ███╗   ███╗
+████╗ ████║██║██╔════╝      ██║████╗  ██║██╔════╝██╔═══██╗██╔══██╗████╗ ████║
+██╔████╔██║██║███████╗█████╗██║██╔██╗ ██║█████╗  ██║   ██║██████╔╝██╔████╔██║
+██║╚██╔╝██║██║╚════██║╚════╝██║██║╚██╗██║██╔══╝  ██║   ██║██╔══██╗██║╚██╔╝██║
+██║ ╚═╝ ██║██║███████║      ██║██║ ╚████║██║     ╚██████╔╝██║  ██║██║ ╚═╝ ██║
+╚═╝     ╚═╝╚═╝╚══════╝      ╚═╝╚═╝  ╚═══╝╚═╝      ╚═════╝ ╚═╝  ╚═╝╚═╝     ╚═╝
+"""
 
-def help():
-    # Code to display help information goes here
-    print("""
-Options:
+version = "(Version 1.0.0)"
+
+product_intro = """
+Mis-inform aims to bridge the information gap and keep citizens engaged in civic matters.
+We do this by providing up-to-date information on government affairs.
+"""
+
+guide = """
+Here are the current features:
+
     press      Display the latest press releases issued by the government.
     budget     Display the actual and projected income and expenses of the government.
     projects   Display information about all ongoing government projects, including their completion rates and estimated completion dates.
@@ -17,50 +36,100 @@ Options:
     holidays   Display the list of public holidays for the current year.
     tenders    Display all pending tender notices.
     contact    Display contact information for government departments.
-    -h, --help Display the help page and exit.
-""")
+    help       Display this informaiton page again
+    exit       Exit MIS-Inform
+"""
+
+def show_terminal_menu(options = [], menu_title=""):
+    centered_options = map(lambda option: option.center(77), options)
+    terminal_menu = TerminalMenu(centered_options, menu_cursor="", title=menu_title)
+    terminal_menu_selection_index = terminal_menu.show()
+
+    # Get the selected option by name
+    # Using names is more readable and generally safer than indexes
+    return options[terminal_menu_selection_index]
 
 
-# print(budget.Budget1.get_allocations())
 
-# Main program loop
+exit_message = "01100010 01111001 01100101 which is binary for 'bye'..."
+
+flags = {
+    'exit_program': False
+}
+
+# Loop to render screen
 while True:
+    try:
+            
+        # Clears screen
+        def clear_screen():
+            if os_name == "posix":
+                # Use clear command on Linux, Mac OS, BSD
+                system("clear")
+            else:
+                # Else the system is Windows
+                system("cls")
 
-    print("Welcome to Misinform! Please select an option:")
-    print("1. Press")
-    print("2. Budget")
-    print("3. Projects")
-    print("4. Economy")
-    print("5. Population")
-    print("6. Holidays")
-    print("7. Tenders")
-    print("8. Contact")
-    print("9. Help")
-    print("0. Exit")
-    choice = input("Enter your choice: ")
+        # Checks if the program should exit
+        if flags['exit_program']:
+            clear_screen()
+            print(exit_message)
+            sleep(1)
+            break
 
-    if choice == "1":
-        press()
-    elif choice == "2":
-        print(budget.get_allocations(2020))
-        print(budget.get_budget(2019))
-        print(budget.get_revenue(2014))
-    elif choice == "3":
-        projects()
-    elif choice == "4":
-        economy()
-    elif choice == "5":
-        population()
-    elif choice == "6":
-        holidays.holidays()
-    elif choice == "7":
-        tenders()
-    elif choice == "8":
-        contact()
-    elif choice == "9":
-        help()
-    elif choice == "0":
-        print("Thank you for using Misinform!")
-        sys.exit(0)
-    else:
-        print("Invalid choice. Please try again.")
+        # Tells the program to exit
+        def trigger_exit():
+            flags['exit_program'] = True
+    
+        # Prints the guide
+        def show_help_info():
+            print(guide)
+
+        clear_screen()
+
+        # Print welcome screen and version
+        print(welcome_screen)
+        print(version)
+    
+        # Options
+        options = {
+            'Press': None,
+            'Budget': None,
+            'Projects': projects,
+            'Economy': economy,
+            'Population': population,
+            'Holidays': holidays,
+            'Tenders': tenders,
+            'Contact': contacts,
+            'Help': show_help_info,
+            'Exit': trigger_exit
+        }
+    
+        # Creating a list of all available options
+        options_list = list(options.keys())
+
+        # Showing the terminal menu
+        # User's selection will be returned and stored in s
+        s = show_terminal_menu(options_list, "Main Menu")
+
+        # Calling the function for the option the user picked
+        options[s].__call__()
+    
+
+        # Create an exit menu
+        print("")
+        print("")
+        print("")
+        exit_options = ["Back to Main Menu", "Exit"]
+    
+        s = show_terminal_menu(exit_options, "Exit Options")
+
+        if s == "Exit":
+            trigger_exit()
+        else:
+            # The user opted to return to the main menu
+            # We make sure that they do not exit
+            flags['exit_program'] = False
+    except:
+        print("Something went wrong. Please try again...")
+        sleep(1.5)
