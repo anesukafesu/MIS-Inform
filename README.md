@@ -1,58 +1,40 @@
 # MIS-Inform
 
-## Setup and Virtual Environments
-To run the project, you have to install the requirements listed in the `requirements.txt` file. You can use the pip command as follows:
 
-`pip install -r requirements.txt`
+## Setup
+To run the project, you have to run the setup script in the root directory. This script will add the project directory to your PATH variable.
 
-## Project Structure
+`./setup`
 
-The project is made of a main script written in the `main.py` file and submodules written in the submodules directory. In addition there is a database whose cursor is implemented in the `submodules/database.py` file.
+## Run the project
+Once the script, has been setup, you may start the application with the command
+`misinform`
 
-### Main Script
-The main script is written in main.py. This script reads commands and sends them to the relevant submodule. 
-For example when you run the command `misinform budget`, the main script will call the budget function of the budget submodule.
+or if the current folder was not successfully added to your PATH variable you may use the relative path variable:
+`./misinform`
 
-### Submodules
-The project is made up of several submodules. Each of which implements a feature. A submodule is a python file whose name is the name of the file. Each module should have a function that will be called by the main script whenever a command is entered that requires that module.
+## Current features
+ 
+press - display the latest press releases issued by the government.
+budget - display the actual and projected income and expenses of the government.
+projects - display information about all ongoing government projects, including their completion rates and estimated completion dates.
+economy - display current economic information, including GDP, exchange rate, employment rate, etc.
+population - display population statistics.
+holidays - display the list of public holidays for the current year.
+tenders - display all pending tender notices.
+contact - display contact information for government departments.
 
-contacts
-Display contacts of different government departments.
+## Technical documentation
+This part of the documentation is only relevant to developers/contributors.
 
+### Project Structure
+
+The main program runs in the `main.py`. This file creates the menu and receives user input. Based on the user's input it calls a function from the submodules directory. These functions are responsible for rendering the content needs. However, before the main script runs, there is some preparation work that needs to be done. This is handled by the `misinform` bash script. The script acts like a boot loader. When you write the `misinform` command, it does some preparatory work before running the `main.py` file that then takes over.
 
 ### Database
-The database used in this project is MySQL. As a result, you will need a MySQL connnector installed, which should be installed if you ran the `pip install -r requirements.txt` when setting up the project.
+The application relies on data stored in a cloud MySQL database. The `submodules/database.py` module provides an easy way to read data from the database. The module is documented. This application only has read access to the database.
 
-#### Database usage instructions
-These instructions are written as part of the `database.py` module.
 
-### OPTIONS 
-OPTIONS
-       press
-Display the latest press releases issued by the government.
-
-       budget
-Display the actual and projected income and expenses of the government.
-
-       projects
-Display information about all ongoing government projects, including their completion rates and estimated completion dates.
-
-       economy
-Display current economic information, including GDP, exchange rate, employment rate, etc.
-
-       population
-Display population statistics.
-
-       holidays
-Display the list of public holidays for the current year.
-
-       tenders
-Display all pending tender notices.
-
-       contact
-Display contact information for government departments.
-
-       -h, --help
 Display the help page and exit.
 
 # Contributors 
