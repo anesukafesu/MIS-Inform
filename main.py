@@ -11,19 +11,19 @@ from budget import budget
 from os import system, name as os_name
 from time import sleep
 
-welcome_screen = """
-███╗   ███╗██╗███████╗      ██╗███╗   ██╗███████╗ ██████╗ ██████╗ ███╗   ███╗
-████╗ ████║██║██╔════╝      ██║████╗  ██║██╔════╝██╔═══██╗██╔══██╗████╗ ████║
-██╔████╔██║██║███████╗█████╗██║██╔██╗ ██║█████╗  ██║   ██║██████╔╝██╔████╔██║
-██║╚██╔╝██║██║╚════██║╚════╝██║██║╚██╗██║██╔══╝  ██║   ██║██╔══██╗██║╚██╔╝██║
-██║ ╚═╝ ██║██║███████║      ██║██║ ╚████║██║     ╚██████╔╝██║  ██║██║ ╚═╝ ██║
-╚═╝     ╚═╝╚═╝╚══════╝      ╚═╝╚═╝  ╚═══╝╚═╝      ╚═════╝ ╚═╝  ╚═╝╚═╝     ╚═╝
+welcome_screen ="""
+███╗   ███╗██╗      ███████╗██╗   ██╗███████╗████████╗███████╗███╗   ███╗
+████╗ ████║██║      ██╔════╝╚██╗ ██╔╝██╔════╝╚══██╔══╝██╔════╝████╗ ████║
+██╔████╔██║██║█████╗███████╗ ╚████╔╝ ███████╗   ██║   █████╗  ██╔████╔██║
+██║╚██╔╝██║██║╚════╝╚════██║  ╚██╔╝  ╚════██║   ██║   ██╔══╝  ██║╚██╔╝██║
+██║ ╚═╝ ██║██║      ███████║   ██║   ███████║   ██║   ███████╗██║ ╚═╝ ██║
+╚═╝     ╚═╝╚═╝      ╚══════╝   ╚═╝   ╚══════╝   ╚═╝   ╚══════╝╚═╝     ╚═╝
 """
 
 version = "(Version 1.0.0)"
 
 product_intro = """
-Mis-inform aims to bridge the information gap and keep citizens engaged in civic matters.
+Mi-system aims to bridge the information gap and keep citizens engaged in civic matters.
 We do this by providing up-to-date information on government affairs.
 """
 
@@ -43,7 +43,7 @@ Here are the current features:
 """
 
 def show_terminal_menu(options = [], menu_title=""):
-    centered_options = map(lambda option: option.center(77), options)
+    centered_options = map(lambda option: option.center(73), options)
     terminal_menu = TerminalMenu(centered_options, menu_cursor="", title=menu_title)
     terminal_menu_selection_index = terminal_menu.show()
 

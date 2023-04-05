@@ -1,4 +1,4 @@
-# MIS-Inform
+# MI-System
 
 
 ## Setup
@@ -11,7 +11,7 @@ Once the script, has been setup, you may start the application with the command
 `misinform`
 
 or if the current folder was not successfully added to your PATH variable you may use the relative path variable:
-`./misinform`
+`./misystem`
 
 ## Current features
  
@@ -29,13 +29,10 @@ This part of the documentation is only relevant to developers/contributors.
 
 ### Project Structure
 
-The main program runs in the `main.py`. This file creates the menu and receives user input. Based on the user's input it calls a function from the submodules directory. These functions are responsible for rendering the content needs. However, before the main script runs, there is some preparation work that needs to be done. This is handled by the `misinform` bash script. The script acts like a boot loader. When you write the `misinform` command, it does some preparatory work before running the `main.py` file that then takes over.
+The main program runs in the `main.py`. This file creates the menu and receives user input. Based on the user's input it calls a function from the submodules directory. These functions are responsible for rendering the content needs. However, before the main script runs, there is some preparation work that needs to be done. This is handled by the `misystem` bash script. The script acts like a boot loader. When you write the `misystem` command, it does some preparatory work before running the `main.py` file that then takes over.
 
 ### Database
-The application relies on data stored in a cloud MySQL database. The `submodules/database.py` module provides an easy way to read data from the database. The module is documented. This application only has read access to the database.
-
-
-Display the help page and exit.
+The application relies on data stored in a cloud MySQL database. The `submodules/database.py` module provides an easy way to connect to the database and make SQL queries. For instructions on how to use `database.py` module, you can read its documentation and the documentation of its functions. This application only has read access to the database.
 
 # Contributors 
 Samuel
