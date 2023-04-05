@@ -6,7 +6,7 @@ from economy import economy
 from population import population
 from tenders import tenders
 from contact import contacts
-from os import system
+from os import system, name as os_name
 from time import sleep
 
 welcome_screen = """
@@ -51,7 +51,7 @@ def show_terminal_menu(options = [], menu_title=""):
 
 
 
-exit_message = "01000111 01101111 01101111 01100100  01100010 01111001 01100101"
+exit_message = "01100010 01111001 01100101 which is binary for 'bye'..."
 
 flags = {
     'exit_program': False
@@ -60,11 +60,23 @@ flags = {
 # Loop to render screen
 while True:
     try:
+            
+        # Clears screen
+        def clear_screen():
+            if os_name == "posix":
+                # Use clear command on Linux, Mac OS, BSD
+                system("clear")
+            else:
+                # Else the system is Windows
+                system("cls")
+
         # Checks if the program should exit
         if flags['exit_program']:
+            clear_screen()
             print(exit_message)
+            sleep(1)
             break
-    
+
         # Tells the program to exit
         def trigger_exit():
             flags['exit_program'] = True
@@ -73,12 +85,8 @@ while True:
         def show_help_info():
             print(guide)
 
-        # Clear screen
-        try:
-            system("clear")
-        except:
-            system("cls")
-    
+        clear_screen()
+
         # Print welcome screen and version
         print(welcome_screen)
         print(version)
