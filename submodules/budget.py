@@ -11,8 +11,13 @@ from submodules.database import create_cursor
 cursor, db = create_cursor()
 
 def budget():
-    year = input('Enter the a year ')
-    return """
+    year = input('Enter a year:  ')
+
+    budget = get_budget(year)
+    allocation = get_allocations(year)
+    revenue = get_revenue(year)
+
+    print ("""
                                 OVERVIEW
         The Rwandan Government makes her annual budgets around essential pillars
         of the nation according to the priorities for each year. 
@@ -22,7 +27,12 @@ def budget():
         Each year budget of the Rwandan Government majorly aim to promote sustainable 
         economic growth and, improve the well-being of the Rwandan citizens.
          
-    """
+    """)
+
+    print(budget)
+    print(allocation)
+    print(revenue)
+
 
 Budget_request_template = """
         THE RWANDAN GOVERNMENT BUDGET FOR THE YEAR {} - OVERVIEW
