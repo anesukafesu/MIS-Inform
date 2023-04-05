@@ -6,6 +6,7 @@ from economy import economy
 from population import population
 from tenders import tenders
 from contact import contacts
+from press import press
 from os import system, name as os_name
 from time import sleep
 
@@ -93,7 +94,7 @@ while True:
     
         # Options
         options = {
-            'Press': None,
+            'Press': press,
             'Budget': None,
             'Projects': projects,
             'Economy': economy,
