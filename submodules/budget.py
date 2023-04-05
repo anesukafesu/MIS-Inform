@@ -11,6 +11,7 @@ from submodules.database import create_cursor
 cursor, db = create_cursor()
 
 def budget():
+    year = input('Enter the a year ')
     return """
                                 OVERVIEW
         The Rwandan Government makes her annual budgets around essential pillars
