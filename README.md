@@ -4,7 +4,7 @@
 ## Setup
 To run the project, you have to run the setup script in the root directory. This script will add the project directory to your PATH variable.
 
-`./setup`
+`./misystem-setup`
 
 ## Run the project
 Once the script, has been setup, you may start the application with the command
