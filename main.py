@@ -49,7 +49,7 @@ flags = {
 }
 
 
-def show_terminal_menu(options = [], menu_title=""):
+def show_terminal_menu(options = [], menu_title = ""):
     centered_options = map(lambda option: option.center(73), options)
     terminal_menu = TerminalMenu(centered_options, menu_cursor="", title=menu_title)
     terminal_menu_selection_index = terminal_menu.show()
@@ -111,11 +111,11 @@ while True:
         options_list = list(options.keys())
 
         # Showing the terminal menu
-        # User's selection will be returned and stored in s
-        s = show_terminal_menu(options_list, "Main Menu")
+        # The function will return the user's selection
+        selection = show_terminal_menu(options_list, "Main Menu")
 
         # Calling the function for the option the user picked
-        options[s].__call__()
+        options[selection].__call__()
     
 
         # Create an exit menu
@@ -124,9 +124,9 @@ while True:
         print("")
         exit_options = ["Back to Main Menu", "Exit"]
     
-        s = show_terminal_menu(exit_options, "Exit Options")
+        selection = show_terminal_menu(exit_options, "Exit Options")
 
-        if s == "Exit":
+        if selection == "Exit":
             trigger_exit()
         else:
             # The user opted to return to the main menu
