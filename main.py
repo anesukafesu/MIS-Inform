@@ -59,33 +59,33 @@ flags = {
     'exit_program': False
 }
 
+# Clears screen
+def clear_screen():
+    if os_name == "posix":
+        # Use clear command on Linux, Mac OS, BSD
+        system("clear")
+    else:
+        # Else the system is Windows
+        system("cls")
+
+
+# Tells the program to exit
+def trigger_exit():
+    flags['exit_program'] = True
+
+# Prints the guide
+def show_help_info():
+    print(guide)
+
 # Loop to render screen
 while True:
     try:
-            
-        # Clears screen
-        def clear_screen():
-            if os_name == "posix":
-                # Use clear command on Linux, Mac OS, BSD
-                system("clear")
-            else:
-                # Else the system is Windows
-                system("cls")
-
         # Checks if the program should exit
         if flags['exit_program']:
             clear_screen()
             print(exit_message)
             sleep(1)
             break
-
-        # Tells the program to exit
-        def trigger_exit():
-            flags['exit_program'] = True
-    
-        # Prints the guide
-        def show_help_info():
-            print(guide)
 
         clear_screen()
 
