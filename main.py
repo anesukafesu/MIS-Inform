@@ -42,6 +42,13 @@ Here are the current features:
     exit       Exit MIS-Inform
 """
 
+exit_message = "01100010 01111001 01100101 which is binary for 'bye'..."
+
+flags = {
+    'exit_program': False
+}
+
+
 def show_terminal_menu(options = [], menu_title=""):
     centered_options = map(lambda option: option.center(73), options)
     terminal_menu = TerminalMenu(centered_options, menu_cursor="", title=menu_title)
@@ -51,13 +58,6 @@ def show_terminal_menu(options = [], menu_title=""):
     # Using names is more readable and generally safer than indexes
     return options[terminal_menu_selection_index]
 
-
-
-exit_message = "01100010 01111001 01100101 which is binary for 'bye'..."
-
-flags = {
-    'exit_program': False
-}
 
 # Clears screen
 def clear_screen():
