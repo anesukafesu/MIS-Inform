@@ -1,0 +1,37 @@
+#!/usr/bin/bash
+
+# This script sets up everything the program needs to run
+# 1. Install dependencies via pip
+# 2. Add current working directory to PATH variable
+
+#TODO: Setup virtual environments in this script. Before installing dependencies. Then make sure the misystem script begins by activating the virtual environment before starting. An additional cleanup script can be written to deactivate the virtual environment when the program is exiting. This cleanup script will be started from the main.py
+
+# Installing dependencies
+echo "Installing PIP dependencies"
+pip install -r requirements.txt
+
+# Creating a new path variable that includes the current working directory
+NEW_PATH="$PATH:$(pwd)"
+
+# Constructing the command to be added in the .bashrc
+SET_NEW_PATH_COMMAND="export PATH=$NEW_PATH"
+
+# The file path were .bashrc
+BASHRC_FILE_PATH="$HOME/.bashrc"
+
+# TODO: Rather than adding the path variable all the time, in future we may want to check if the cwd already exists in the variable in which case there'd be no reason to add the cwd
+
+if ! $(echo $PATH | grep /home/anesu/Documents/MIS-Inform -q); 
+then
+       	# Adding the new path to the ~/.bashrc
+	echo "Adding $NEW_PATH to the variable in $BASHRC_FILE_PATH";
+	echo $SET_NEW_PATH_COMMAND >> "$BASHRC_FILE_PATH";
+
+	# Adding the current working directory to the .bashrc file
+	echo "export MISYSTEM_PROJECT_DIR=$(pwd)" >> "$BASHRC_FILE_PATH";
+
+	# Running the file again so the modified .bashrc works in the terminal
+	echo "Open a new terminal window to run this application to begin using the \`misystem\` command";
+fi
+
+echo "All done, you can start using the application using the \`misystem\` command"

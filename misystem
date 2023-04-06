@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 
 # Add submodules folder to the list of folders that Python searches for imported modules
-export PYTHONPATH="$PYTHONPATH:$(pwd)/submodules"
+export PYTHONPATH="$PYTHONPATH:$MISYSTEM_PROJECT_DIR/submodules"
 
 # Running the main python file
-./main.py
+$MISYSTEM_PROJECT_DIR/main.py
