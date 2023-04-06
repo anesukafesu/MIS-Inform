@@ -8,7 +8,7 @@ To run the project, you have to run the setup script in the root directory. This
 
 ## Run the project
 Once the script, has been setup, you may start the application with the command
-`misinform`
+`misystem`
 
 or if the current folder was not successfully added to your PATH variable you may use the relative path variable:
 `./misystem`
